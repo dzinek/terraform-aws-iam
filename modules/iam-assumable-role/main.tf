@@ -23,6 +23,8 @@ data "aws_iam_policy_document" "assume_role" {
       }
     }
   }
+
+  override_json = var.role_additional_policy_statements
 }
 
 data "aws_iam_policy_document" "assume_role_with_mfa" {
@@ -53,6 +55,8 @@ data "aws_iam_policy_document" "assume_role_with_mfa" {
       values   = [var.mfa_age]
     }
   }
+
+  override_json = var.role_additional_policy_statements
 }
 
 resource "aws_iam_role" "this" {
